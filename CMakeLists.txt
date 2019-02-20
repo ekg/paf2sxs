@@ -35,7 +35,9 @@ ExternalProject_Add(tayweeargs
   GIT_REPOSITORY "https://github.com/Taywee/args.git"
   GIT_TAG "3de44ec671db452cc0c4ef86399b108939768abb"
   UPDATE_COMMAND ""
-  INSTALL_COMMAND "")
+  INSTALL_COMMAND ""
+  BUILD_COMMAND ""
+  CONFIGURE_COMMAND "")
 ExternalProject_Get_property(tayweeargs SOURCE_DIR)
 set(tayweeargs_INCLUDE "${SOURCE_DIR}")
 
@@ -44,7 +46,9 @@ ExternalProject_Add(gzipreader
   GIT_REPOSITORY "https://github.com/gatoravi/gzip_reader.git"
   GIT_TAG "0ef26c0399e926087f9d6c4a56067a7bf1fc4f5e"
   UPDATE_COMMAND ""
-  INSTALL_COMMAND "")
+  INSTALL_COMMAND ""
+  BUILD_COMMAND ""
+  CONFIGURE_COMMAND "")
 ExternalProject_Get_property(gzipreader SOURCE_DIR)
 set(gzipreader_INCLUDE "${SOURCE_DIR}")
 
