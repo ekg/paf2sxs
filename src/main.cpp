@@ -34,7 +34,10 @@ int main(int argc, char** argv) {
     std::vector<std::string> lines;
     while (std::getline(paf_in, line)) {
         paf2sxs::paf_row_t paf(line);
-        //std::cout << paf << std::endl;
+        // switch to sxs start/end format
+        if (!paf.query_target_same_strand) {
+            std::swap(paf.target_start, paf.target_end);
+        }
         std::cout << "A" << "\t" << paf.query_sequence_name << "\t" << paf.target_sequence_name << "\n"
                   << "I" << "\t" << paf.query_start << "\t" << paf.query_end << "\t" << paf.target_start << "\t" << paf.target_end << "\n"
                   << "M" << "\t" << paf.num_matches << "\n"
