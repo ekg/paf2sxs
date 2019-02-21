@@ -36,10 +36,15 @@ int main(int argc, char** argv) {
         paf2sxs::paf_row_t paf(line);
         // switch to sxs start/end format
         if (!paf.query_target_same_strand) {
-            std::swap(paf.target_start, paf.target_end);
+            // we are reporting coordinates in the reverse complement
+            // put them on the forward strand of the sequence
+            // then flip them
+            paf.query_start = paf.query_sequence_length - paf.query_start;
+            paf.query_end = paf.query_sequence_length - paf.query_end;
+            std::swap(paf.query_start, paf.query_end);
         }
-        std::cout << "A" << "\t" << paf.query_sequence_name << "\t" << paf.target_sequence_name << "\n"
-                  << "I" << "\t" << paf.query_start << "\t" << paf.query_end << "\t" << paf.target_start << "\t" << paf.target_end << "\n"
+        std::cout << "A" << "\t" << paf.target_sequence_name << "\t" << paf.query_sequence_name << "\n"
+                  << "I" << "\t" << paf.target_start << "\t" << paf.target_end << "\t" << paf.query_start << "\t" << paf.query_end << "\n"
                   << "M" << "\t" << paf.num_matches << "\n"
                   << "C" << "\t" << paf2sxs::cigar_to_string(paf.cigar) << "\n"
                   << "Q" << "\t" << paf.mapping_quality << "\n";
