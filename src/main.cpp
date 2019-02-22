@@ -41,7 +41,7 @@ int main(int argc, char** argv) {
             // then flip them
             paf.query_start = paf.query_sequence_length - paf.query_start;
             paf.query_end = paf.query_sequence_length - paf.query_end;
-            std::swap(paf.query_start, paf.query_end);
+            //std::swap(paf.query_start, paf.query_end);
         }
         std::cout << "A" << "\t" << paf.target_sequence_name << "\t" << paf.query_sequence_name << "\n"
                   << "I" << "\t" << paf.target_start << "\t" << paf.target_end << "\t" << paf.query_start << "\t" << paf.query_end << "\n"
